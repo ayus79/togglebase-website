@@ -7,7 +7,15 @@ interface Props {
   image?: string;
 }
 
-const { title = 'Togglebase - Developer-first feature flags', description = 'Open source feature flags. Toggle features remotely, run A/B tests, and control rollouts without redeploying. Python SDK and multi-environment support.', image = '/og.png' } = Astro.props;
+const base = import.meta.env.BASE_URL || '/';
+const normalizedBase = base.endsWith('/') ? base : `${base}/`;
+const defaultImage = `${normalizedBase}og.png`;
+
+const {
+  title = 'Togglebase - Developer-first feature flags',
+  description = 'Open source feature flags. Toggle features remotely, run A/B tests, and control rollouts without redeploying. Python SDK and multi-environment support.',
+  image = defaultImage
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://togglebase.local');
 ---
 
@@ -17,8 +25,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://toggleba
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="icon" href={`${normalizedBase}favicon.svg`} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={`${normalizedBase}favicon.svg`} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
