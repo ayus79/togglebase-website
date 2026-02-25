@@ -1,0 +1,110 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="404 - Flag not found" description="The page you are looking for doesn’t exist. Flip back to a safe state.">
+  <Header />
+  <main class="pt-16 min-h-[calc(100vh-4rem)] flex flex-col">
+    <section class="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-16 sm:py-20 md:py-28">
+      <div class="mx-auto max-w-xl w-full text-center">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-600 dark:text-brand-400">
+          404 - Flag not found
+        </p>
+        <h1 class="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          This route is turned off.
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
+          Either the feature hasn&apos;t shipped yet, or the page moved. Flip the toggle below to head back to a safe release.
+        </p>
+
+        <!-- Creative flag toggle -->
+        <div class="mt-8 flex justify-center">
+          <button
+            id="togglebase-404-toggle"
+            type="button"
+            class="inline-flex flex-col items-center gap-3 rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900/80 px-5 py-4 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-950"
+            role="switch"
+            aria-checked="false"
+          >
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">togglebase_404</span>
+              <div class="relative h-7 w-12 shrink-0 rounded-full bg-zinc-200 dark:bg-zinc-700 p-0.5">
+                <span
+                  class="absolute inset-y-0 left-0 flex items-center pl-1 text-[10px] font-semibold text-zinc-500 dark:text-zinc-400"
+                  data-label="off"
+                >
+                  OFF
+                </span>
+                <span
+                  class="absolute inset-y-0 right-0 flex items-center pr-1 text-[10px] font-semibold text-brand-600 dark:text-brand-400 opacity-50"
+                  data-label="on"
+                >
+                  ON
+                </span>
+                <span
+                  class="block h-6 w-6 rounded-full bg-white dark:bg-zinc-300 shadow-sm translate-x-0 transition-transform duration-200"
+                  data-thumb
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
+              Toggle back to <a href="/" class="font-medium text-brand-600 dark:text-brand-400 hover:underline">home</a> for a safe deployment.
+            </p>
+          </button>
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+          <a
+            href="/"
+            class="inline-flex items-center justify-center rounded-xl bg-zinc-900 dark:bg-white px-5 py-3 text-sm sm:text-base font-semibold text-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors"
+          >
+            Back to home
+          </a>
+          <a
+            href="/features"
+            class="inline-flex items-center justify-center rounded-xl border border-zinc-300 dark:border-zinc-700 px-5 py-3 text-sm sm:text-base font-semibold text-zinc-900 dark:text-white hover:border-zinc-400 dark:hover:border-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900/70 transition-colors"
+          >
+            Explore features
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+  <script>
+    if (typeof window !== 'undefined') {
+      window.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('togglebase-404-toggle');
+        if (!btn) return;
+
+        const thumb = btn.querySelector('[data-thumb]');
+        const offLabel = btn.querySelector('[data-label="off"]');
+        const onLabel = btn.querySelector('[data-label="on"]');
+
+        btn.addEventListener('click', () => {
+          const isOn = btn.getAttribute('aria-checked') === 'true';
+          const nextIsOn = !isOn;
+          btn.setAttribute('aria-checked', nextIsOn ? 'true' : 'false');
+
+          if (thumb) {
+            thumb.classList.toggle('translate-x-0', !nextIsOn);
+            thumb.classList.toggle('translate-x-5', nextIsOn);
+          }
+
+          if (offLabel) {
+            offLabel.classList.toggle('opacity-50', nextIsOn);
+          }
+
+          if (onLabel) {
+            onLabel.classList.toggle('opacity-50', !nextIsOn);
+          }
+        });
+      });
+    }
+  </script>
+</Layout>
+
