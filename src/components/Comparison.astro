@@ -1,0 +1,83 @@
+---
+const rows = [
+  {
+    label: 'Setup time',
+    togglebase: 'Minutes to first flag with the Python SDK.',
+    inHouse: 'Days or weeks wiring config, storage, and rollout logic.',
+  },
+  {
+    label: 'Feature rollouts',
+    togglebase: 'Remote toggles, %, and A/B testing built in.',
+    inHouse: 'Custom code for each rollout; hard to reuse across services.',
+  },
+  {
+    label: 'Environments',
+    togglebase: 'Separate dev, staging, and production states out of the box.',
+    inHouse: 'Manual per-env config; easy to drift or misconfigure.',
+  },
+  {
+    label: 'Safety switches',
+    togglebase: 'Kill switches for risky features without redeploying.',
+    inHouse: 'Often requires emergency deploys or manual config edits.',
+  },
+  {
+    label: 'Maintenance',
+    togglebase: 'One place to see, clean up, and retire flags.',
+    inHouse: 'Scattered flags in code; hard to know what is safe to delete.',
+  },
+];
+---
+
+<section id="comparison" class="py-16 sm:py-20 md:py-28 bg-zinc-50/40 dark:bg-zinc-900/40">
+  <div class="mx-auto max-w-6xl w-full px-4 sm:px-6 lg:px-8 xl:px-8">
+    <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-14">
+      <h2 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
+        Togglebase vs building in-house
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
+        Use your engineering time for product, not reinventing feature flags, rollouts, and experiments from scratch.
+      </p>
+    </div>
+    <div class="grid gap-6 md:gap-8 md:grid-cols-2">
+      <article class="rounded-2xl border border-brand-100 dark:border-brand-900/60 bg-white dark:bg-zinc-900/70 p-6 sm:p-7 shadow-sm">
+        <h3 class="text-sm font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">
+          Togglebase
+        </h3>
+        <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+          A focused tool for safe, remote-controlled releases from day one.
+        </p>
+        <dl class="mt-6 space-y-4">
+          {rows.map((row) => (
+            <div class="flex items-start gap-3">
+              <div class="mt-1 h-2 w-2 rounded-full bg-brand-500" />
+              <div class="text-left">
+                <dt class="text-sm font-medium text-zinc-900 dark:text-white">{row.label}</dt>
+                <dd class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{row.togglebase}</dd>
+              </div>
+            </div>
+          ))}
+        </dl>
+      </article>
+      <article class="rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900/70 p-6 sm:p-7 shadow-sm">
+        <h3 class="text-sm font-semibold uppercase tracking-wide text-zinc-900 dark:text-zinc-200">
+          Building in-house
+        </h3>
+        <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+          Custom logic that works at first, but becomes hard to scale and maintain.
+        </p>
+        <dl class="mt-6 space-y-4">
+          {rows.map((row) => (
+            <div class="flex items-start gap-3">
+              <div class="mt-1 h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-700" />
+              <div class="text-left">
+                <dt class="text-sm font-medium text-zinc-900 dark:text-white">{row.label}</dt>
+                <dd class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{row.inHouse}</dd>
+              </div>
+            </div>
+          ))}
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
