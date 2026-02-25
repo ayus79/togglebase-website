@@ -2,6 +2,15 @@
 import ThemeToggle from './ThemeToggle.astro';
 import Logo from './Logo.astro';
 import Link from './BaseLink.astro';
+
+const pathname = Astro.url.pathname || '/';
+
+const isActive = (href: string) => {
+  if (href === '/') {
+    return pathname === '/' || pathname === '/index';
+  }
+  return pathname.startsWith(href);
+};
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl">
@@ -11,15 +20,45 @@ import Link from './BaseLink.astro';
         <Logo variant="header" />
       </div>
       <nav class="hidden md:flex items-center gap-6 lg:gap-8 flex-shrink-0" aria-label="Main">
-        <Link href="/" class="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Home</Link>
-        <Link href="/about" class="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">About</Link>
-        <Link href="/features" class="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Features</Link>
-        <Link href="/how-it-works" class="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">How it works</Link>
-        <Link href="/pricing" class="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Pricing</Link>
+        <Link
+          href="/"
+          aria-current={isActive('/') ? 'page' : undefined}
+          class="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+        >
+          Home
+        </Link>
+        <Link
+          href="/about"
+          aria-current={isActive('/about') ? 'page' : undefined}
+          class="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+        >
+          About
+        </Link>
+        <Link
+          href="/features"
+          aria-current={isActive('/features') ? 'page' : undefined}
+          class="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+        >
+          Features
+        </Link>
+        <Link
+          href="/how-it-works"
+          aria-current={isActive('/how-it-works') ? 'page' : undefined}
+          class="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+        >
+          How it works
+        </Link>
+        <Link
+          href="/pricing"
+          aria-current={isActive('/pricing') ? 'page' : undefined}
+          class="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+        >
+          Pricing
+        </Link>
       </nav>
       <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
         <Link href="#" class="hidden sm:inline-flex items-center justify-center rounded-lg border border-zinc-300 dark:border-zinc-600 p-2 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors" aria-label="GitHub (coming soon)">
-          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
         </Link>
         <ThemeToggle />
         <Link href="/pricing" class="hidden sm:inline-flex rounded-lg bg-zinc-900 dark:bg-white px-4 py-2 text-sm font-medium text-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors">
@@ -33,13 +72,45 @@ import Link from './BaseLink.astro';
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 py-4 shadow-lg" aria-label="Mobile menu">
       <nav class="flex flex-col gap-1">
-        <Link href="/" class="rounded-lg px-4 py-2.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white">Home</Link>
-        <Link href="/about" class="rounded-lg px-4 py-2.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white">About</Link>
-        <Link href="/features" class="rounded-lg px-4 py-2.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white">Features</Link>
-        <Link href="/how-it-works" class="rounded-lg px-4 py-2.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white">How it works</Link>
-        <Link href="/pricing" class="rounded-lg px-4 py-2.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white">Pricing</Link>
+        <Link
+          href="/"
+          aria-current={isActive('/') ? 'page' : undefined}
+          class="rounded-lg px-4 py-2.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white"
+        >
+          Home
+        </Link>
+        <Link
+          href="/about"
+          aria-current={isActive('/about') ? 'page' : undefined}
+          class="rounded-lg px-4 py-2.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white"
+        >
+          About
+        </Link>
+        <Link
+          href="/features"
+          aria-current={isActive('/features') ? 'page' : undefined}
+          class="rounded-lg px-4 py-2.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white"
+        >
+          Features
+        </Link>
+        <Link
+          href="/how-it-works"
+          aria-current={isActive('/how-it-works') ? 'page' : undefined}
+          class="rounded-lg px-4 py-2.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white"
+        >
+          How it works
+        </Link>
+        <Link
+          href="/pricing"
+          aria-current={isActive('/pricing') ? 'page' : undefined}
+          class="rounded-lg px-4 py-2.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white"
+        >
+          Pricing
+        </Link>
         <Link href="#" class="mx-4 rounded-lg border border-zinc-300 dark:border-zinc-600 px-4 py-2.5 text-sm font-medium text-center flex items-center justify-center gap-2">GitHub</Link>
-        <Link href="/pricing" class="mx-4 mt-2 rounded-lg bg-zinc-900 dark:bg-white px-4 py-2.5 text-sm font-medium text-white dark:text-zinc-900 text-center">Get started</Link>
+        <Link href="/pricing" class="mx-4 mt-2 rounded-lg bg-zinc-900 dark:bg-white px-4 py-2.5 text-sm font-medium text-white dark:text-zinc-900 text-center">
+          Get started
+        </Link>
       </nav>
     </div>
   </div>
