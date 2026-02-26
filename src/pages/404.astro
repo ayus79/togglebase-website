@@ -23,14 +23,14 @@ import Link from '../components/BaseLink.astro';
         <!-- Creative flag toggle -->
         <div class="mt-8 flex justify-center">
           <button
-            id="togglebase-404-toggle"
+            id="flagswitch-404-toggle"
             type="button"
             class="inline-flex flex-col items-center gap-3 rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900/80 px-5 py-4 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-950"
             role="switch"
             aria-checked="false"
           >
             <div class="flex items-center gap-3">
-              <span class="font-mono text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">togglebase_404</span>
+              <span class="font-mono text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">flagswitch_404</span>
               <div class="relative h-7 w-12 shrink-0 rounded-full bg-zinc-200 dark:bg-zinc-700 p-0.5">
                 <span
                   class="absolute inset-y-0 left-0 flex items-center pl-1 text-[10px] font-semibold text-zinc-500 dark:text-zinc-400"
@@ -81,7 +81,7 @@ import Link from '../components/BaseLink.astro';
   <script>
     if (typeof window !== 'undefined') {
       window.addEventListener('DOMContentLoaded', () => {
-        const btn = document.getElementById('togglebase-404-toggle');
+        const btn = document.getElementById('flagswitch-404-toggle');
         if (!btn) return;
 
         const thumb = btn.querySelector('[data-thumb]');

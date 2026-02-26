@@ -12,11 +12,11 @@ const normalizedBase = base.endsWith('/') ? base : `${base}/`;
 const defaultImage = `${normalizedBase}og.png`;
 
 const {
-  title = 'Togglebase - Developer-first feature flags',
+  title = 'Flagswitch - Developer-first feature flags',
   description = 'Open source feature flags. Toggle features remotely, run A/B tests, and control rollouts without redeploying. Python SDK and multi-environment support.',
   image = defaultImage
 } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://togglebase.local');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://flagswitch.local');
 ---
 
 <!doctype html>

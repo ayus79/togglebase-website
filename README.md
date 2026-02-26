@@ -1,6 +1,6 @@
-# Togglebase
+# Flagswitch
 
-A modern SaaS landing page for **Togglebase** - a developer-first feature flag platform. Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com).
+A modern SaaS landing page for **Flagswitch** - a developer-first feature flag platform. Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com).
 
 ## Features
 
