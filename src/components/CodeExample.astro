@@ -12,7 +12,7 @@
           Use the Python SDK to evaluate flags in your app. Type-safe, with optional local caching and async support.
         </p>
         <ul class="mt-4 sm:mt-6 space-y-2 sm:space-y-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-          <li class="flex items-center gap-2 flex-wrap"><span class="text-brand-500">✓</span> Install with <code class="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs sm:text-sm break-all">pip install togglebase</code></li>
+          <li class="flex items-center gap-2 flex-wrap"><span class="text-brand-500">✓</span> Install with <code class="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs sm:text-sm break-all">pip install flagswitch</code></li>
           <li class="flex items-center gap-2"><span class="text-brand-500">✓</span> Evaluate flags by user, segment, or percentage</li>
           <li class="flex items-center gap-2"><span class="text-brand-500">✓</span> Works with FastAPI, Django, Flask, and more</li>
         </ul>
@@ -25,9 +25,9 @@
             <span class="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-emerald-500/80"></span>
             <span class="ml-2 text-xs font-medium text-zinc-500">main.py</span>
           </div>
-          <pre class="p-3 sm:p-4 md:p-6 overflow-x-auto text-xs sm:text-sm max-w-full"><code class="font-mono text-zinc-300 block min-w-max"><span class="text-purple-400">from</span> togglebase <span class="text-purple-400">import</span> Togglebase
+          <pre class="p-3 sm:p-4 md:p-6 overflow-x-auto text-xs sm:text-sm max-w-full"><code class="font-mono text-zinc-300 block min-w-max"><span class="text-purple-400">from</span> flagswitch <span class="text-purple-400">import</span> FlagSwitch
 
-client = Togglebase(api_key=<span class="text-amber-300">"your_api_key"</span>)
+client = FlagSwitch(api_key=<span class="text-amber-300">"your_api_key"</span>)
 
 <span class="text-zinc-500"># Check if a feature is enabled</span>
 <span class="text-purple-400">if</span> client.is_enabled(<span class="text-amber-300">"new_checkout"</span>, user_id=<span class="text-amber-300">"user_123"</span>):

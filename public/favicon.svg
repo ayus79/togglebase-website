@@ -1,4 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-  <!-- Original lightning bolt, solid blue -->
-  <path d="M13 2L9 10h4l-2.5 10 6.5-8h-4L13 2z" fill="#0ea5e9" />
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Same gradient style as logo -->
+    <linearGradient id="flagGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- White rounded background -->
+  <rect width="256" height="256" rx="56" fill="#FFFFFF"/>
+
+  <!-- FS Typography -->
+  <text
+    x="50%"
+    y="52%"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="Inter, system-ui, -apple-system, sans-serif"
+    font-size="120"
+    font-weight="700"
+    letter-spacing="-6"
+    fill="url(#flagGradient)"
+  >
+    FS
+  </text>
 </svg>

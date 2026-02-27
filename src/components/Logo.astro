@@ -11,19 +11,16 @@ const isFooter = variant === 'footer';
 
 <Link
   href="/"
-  class="inline-flex items-center gap-2 sm:gap-2.5 font-semibold text-zinc-900 dark:text-white transition-opacity hover:opacity-90 min-w-0"
+  class="inline-flex items-center gap-2 sm:gap-2.5 text-zinc-900 dark:text-white transition-opacity hover:opacity-90 min-w-0"
   aria-label="Flagswitch home"
 >
-  <!-- Icon: bold lightning bolt in brand blue -->
   <span
-    class={`flex shrink-0 text-brand-500 ${
-      isFooter ? 'h-8 w-8 sm:h-9 sm:w-9' : 'h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10'
+    class={`tracking-tight truncate ${
+      isFooter ? 'text-lg font-semibold' : 'text-xl sm:text-2xl font-extrabold'
     }`}
-    aria-hidden="true"
   >
-    <svg class="h-full w-full" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M13 2L9 10h4l-2.5 10 6.5-8h-4L13 2z" />
-    </svg>
+    <span class="bg-gradient-to-r from-brand-300 to-brand-500 bg-clip-text text-transparent">
+      Flagswitch
+    </span>
   </span>
-  <span class="text-base sm:text-lg md:text-xl tracking-tight truncate">Flagswitch</span>
 </Link>
